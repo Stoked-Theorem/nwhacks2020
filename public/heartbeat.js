@@ -314,10 +314,12 @@ export class Heartbeat {
 }
 
 async checkBpm(bpm) {
-  if (bpm <= 50 || bpm >= 100) {
+  if (bpm <=35 || bpm >= 150) {
+    // insert button 
+    
     const res = fetch('https://charlenenicer.api.stdlib.com/http-project@dev/sendsms/?event=%7B%20%22name%22%20%3A%20%22Brandon%22%2C%20%22numbers%22%3A%20%5B17788551020%5D%7D')
     // const parsedRes = await res.json();
-    console.log(res);          
+    console.log(res);
   }
 }
 
