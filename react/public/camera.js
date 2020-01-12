@@ -1,7 +1,3 @@
-/* eslint-disable */
-import React from 'react';
-
-
 import { Heartbeat } from './heartbeat.js';
 
 const OPENCV_URI = "https://docs.opencv.org/master/opencv.js";
@@ -29,41 +25,8 @@ async function loadOpenCv(uri) {
     });
   }
   
- 
-
-export class CameraUI extends React.Component {
-  render() {
-    return (
-      <>
-        <div>PulseAlert</div>
-        <Display/>
-        <div>
-          <span>bpm</span>
-          <span>lOoK aT tHiS gRaPh</span>
-        </div>
-        {/* <CamStart/> */}
-      </>
-    );
-  }
-
-}
-
-class Display extends React.Component {
-  render() {
-    return (
-      <>
-      <video hidden id="webcam" width="640" height="480"></video>
-      <canvas id="canvas" width="640" height="480"></canvas>
-      </>
-    )
-  }
-
-  componentDidMount() {
-    let demo = new Heartbeat("webcam", "canvas", HAARCASCADE_URI, 30, 6, 250);
-    var ready = loadOpenCv(OPENCV_URI);
-    ready.then(function() {
-      demo.init();
-    });
-  
-  }
-}
+  let demo = new Heartbeat("webcam", "canvas", HAARCASCADE_URI, 30, 6, 250);
+  var ready = loadOpenCv(OPENCV_URI);
+  ready.then(function() {
+    demo.init();
+  });
