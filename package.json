@@ -1,12 +1,12 @@
 {
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "app.mjs",
+    "type": "module",
     "engines": {
-        "node": ">=10.x.x"
+        "node": ">=10.0.0"
     },
     "scripts": {
-        "start": "node index.js",
-        "test": "mocha --exit test/*.test.js"
+        "start": "node --experimental-modules app.mjs"
     },
     "dependencies": {
         "express": "^4.16.3"
