@@ -305,12 +305,21 @@ export class Heartbeat {
         console.log(bpm);
         // Draw BPM
         this.drawBPM(bpm);
-      }
       signal.delete();
     } else {
       console.log("signal too small");
     }
   }
+}
+
+async checkBpm(bpm) {
+  if (bpm < 40 || bpm > 100) {
+    const res = await fetch('https://charlenenicer.api.stdlib.com/http-project@dev/sendsms/?event=%7B%20%22name%22%20%3A%20%22Brandon%22%2C%20%22numbers%22%3A%20%5B17788551020%5D%7D')
+    const parsedRes = await res.json();
+    console.log(parsedRes);          
+  }
+}
+
   // Calculate fps from timestamps
   getFps(timestamps, timeBase=1000) {
     if (Array.isArray(timestamps) && timestamps.length) {
@@ -494,3 +503,13 @@ export class Heartbeat {
     this.overlayMask.delete();
   }
 }
+
+document.addEventListener('keyup', (e) => {
+  if (e.code === "ArrowUp") {
+    const res =  fetch('https://charlenenicer.api.stdlib.com/http-project@dev/sendsms/?event=%7B%20%22name%22%20%3A%20%22Brandon%22%2C%20%22numbers%22%3A%20%5B17788551020%5D%7D')
+    // const parsedRes = await res.json();
+    console.log(res);
+  }
+
+  // document.getElementById('test').innerHTML = 'playerSpriteX = ' + playerSpriteX;
+});
